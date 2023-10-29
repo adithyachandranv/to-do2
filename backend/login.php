@@ -1,64 +1,33 @@
 <?php
 // Database configuration
-$dbHost = "";
-$dbUsername = "";
-$dbPassword = "";
-$dbName = "";
 
-// Create a database connection
-$conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+session_start();
 
-// Check for connection errors
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+	include("connection.php");
+	include("functions.php");
+	
 
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$name = $_POST['name'];
+		$password = $_POST['password'];
+		$email= $_POST['email'];
+		$ipadd=  $_SERVER['REMOTE_ADDR'];
+		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+		{
 
-function generateRandomUserID() {
+			//save to database
+			//add phone number ip adress
+			$query = "insert into users (user_id,user_name,password,mobile,ip) values ('$user_id','$user_name','$password','$mobile','$ipadd')";
 
-    return uniqid();
-}
+			mysqli_query($con, $query);
 
-
-if (isset($_POST['register'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $userID = generateRandomUserID();
-
-    $sql = "INSERT INTO users (user_id, email, password) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $userID, $email, $password);
-
-    if ($stmt->execute()) {
-        echo "Registration successful!";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    $stmt->close();
-}
-
-
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT user_id, password FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->bind_result($userID, $hashedPassword);
-
-    if ($stmt->fetch() && password_verify($password, $hashedPassword)) {
-        echo "Login successful! User ID: " . $userID;
-    } else {
-        echo "Login failed. Please check your email and password.";
-    }
-
-    $stmt->close();
-}
-
-// Close the database connection
-$conn->close();
+			//header("Location: login.html");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
+	}
 ?>
