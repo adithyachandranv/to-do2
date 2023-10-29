@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+}
+
+.app {
+    width: min(90vw, 500px);
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 2rem;
+}
+
+.container {
+    padding: 2rem 2.5em;
+    background-color: rgb(185, 185, 255);
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
+    border-radius: 0.8rem;
+}
+
+#wrapper {
+    padding: 5px;
+    position: relative;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 8fr 4fr;
+
+}
+
+#wrapper input {
+    width: 100%;
+    background-color: transparent;
+    color: #111111;
+    font-size: 15 wpx;
+    border: none;
+    border-bottom: 2px solid #d1d3d4;
+    padding: 1em 0.5em;
+}
+
+#wrapper input:focus {
+    outline: none;
+    border-color: rgb(129, 217, 255);
+}
+
+#wrapper button {
+    position: relative;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 5 rem;
+    background-color: rgb(113, 113, 255);
+    border: none;
+    outline: none;
+    color: #ffff;
+    cursor: pointer;
+}
+
+#error {
+    text-align: center;
+    background-color: #ffff;
+    color: red;
+    margin-top: 10px;
+    padding: 1em 0;
+    border-radius: 0.8em;
+    display: none;
+}
+
+#pending-tasks {
+    margin-left: 5px;
+}
