@@ -1,1 +1,3 @@
 do javascript validation pass and confom pass
+responsive
+cokkies
