@@ -1,29 +1,22 @@
-<?php
-// Database configuration
-
-session_start();
-
+<?php 
+	//session_start();
 	include("connection.php");
-	include("functions.php");
-	
-
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
 		$name = $_POST['name'];
 		$password = $_POST['password'];
-		$email= $_POST['email'];
-		$ipadd=  $_SERVER['REMOTE_ADDR'];
-		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+		$password = $_POST['email'];
+		if(!empty($name) && !empty($password) && !is_numeric($name))
 		{
 
 			//save to database
 			//add phone number ip adress
-			$query = "insert into users (user_id,user_name,password,mobile,ip) values ('$user_id','$user_name','$password','$mobile','$ipadd')";
+			$query = "insert into users (name,password,email) values ('$name','$password',$email)";
 
-			mysqli_query($con, $query);
+			mysqli_query($conn, $query);
 
-			//header("Location: login.html");
+			//header("Location: login.php");
 			die;
 		}else
 		{

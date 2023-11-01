@@ -5,7 +5,7 @@ $dbuser = "root";
 $dbpass = "";
 $dbname = "todo";
 
-if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
+if(!$conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
 {
 
 	die("failed to connect!");
