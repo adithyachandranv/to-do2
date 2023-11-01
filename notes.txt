@@ -1,3 +1,6 @@
 do javascript validation pass and confom pass
 responsive
 cokkies
+add some pictures for destop viewers 
+make dashboard 
+q

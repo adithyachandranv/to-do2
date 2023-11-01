@@ -10,7 +10,7 @@
 body {
     height: 100vh;
     background-color: rgb(138, 63, 63);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #main-container {
